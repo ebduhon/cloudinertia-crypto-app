@@ -1,0 +1,9 @@
+@import 'font-face';
+
+@include font-face('Metropolis-Light', '../assets/fonts/metropolis/metropolis-r9-light/Metropolis-Light');
+@include font-face('Metropolis-Regular', '../assets/fonts/metropolis/metropolis-r9-regular/Metropolis-Regular');
+@include font-face('Metropolis-Medium', '../assets/fonts/metropolis/metropolis-r9-medium/Metropolis-Medium');
+
+@include font-face('Roboto-Light', '../assets/fonts/roboto/roboto-v18-latin-light/Roboto-Light');
+@include font-face('Roboto-Regular', '../assets/fonts/roboto/roboto-v18-latin-regular/Roboto-Regular');
+@include font-face('Roboto-Medium', '../assets/fonts/roboto/roboto-v18-latin-medium/Roboto-Medium');

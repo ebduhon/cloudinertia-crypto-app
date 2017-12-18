@@ -1,0 +1,355 @@
+
+@import "../vendors/google-fonts"; // mixin to import Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+// 'Roboto-Regular' Google Fonts is self-hosted in 'assets'
+// 'Roboto-Light' Google Fonts is self-hosted in 'assets'
+// 'Roboto-Medium' Google Fonts is self-hosted in 'assets'
+
+$white: #FFFFFF;
+$black: #000000;
+
+@mixin primary-text-color($color-value) {
+    @if lightness($color-value) < 50% {
+        color: transparentize($black, .13);
+    } @else {
+        color: transparentize($white, 0);
+    }
+}
+@mixin secondary-text-color($color-value) {
+    @if lightness($color-value) < 50% {
+        color: transparentize($black, .46);
+    } @else {
+        color: transparentize($white, .3);
+    }
+}
+@mixin tertiary-text-color($color-value) {
+    @if lightness($color-value) < 50% {
+        color: transparentize($black, .62);
+    } @else {
+        color: transparentize($white, .5);
+    }
+}
+
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin font-mixin($font-size, $leading-size, $tracking-size, $font-margin, $mobile-font-size){
+    font-size: $font-size+0px;
+    font-size: ($font-size/10)+0rem;
+    line-height: $leading-size+0px;
+    line-height: ($leading-size/10)+0rem;
+    letter-spacing: $tracking-size+0px;
+    letter-spacing: ($tracking-size/10)+0rem;
+    margin: 0 0 $font-margin/2+0px 0;
+    margin-bottom: ($font-margin/20)+0rem;
+    @media only screen and (max-width: 960px) {
+	    font-size: $mobile-font-size+0px;
+	    font-size: ($mobile-font-size/10)+0rem;
+	  }
+	  @include font-print {
+	    font-size: (($font-size/4)*3)+0pt !important;
+	    line-height: (($leading-size/4)*3)+0pt !important;
+	    letter-spacing: (($tracking-size/4)*3)+0pt !important;
+	    margin: 0 0 ((($font-margin/2)/4)*3)+0pt 0 !important;
+	    color: red !important;
+	  }
+}
+
+// 12 / 2 = 6px
+// ((12 / 4)*3) = 9pt
+
+@mixin font-print {
+  @media only print {
+    @content;
+  }
+}
+
+@mixin font-rendering($font-size-rendering: '') {
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // text-rendering: optimizeLegibility;
+  @if $font-size-rendering == 'font-size-base-ten-small' {
+      @extend %font-size-base-ten-small;
+  } @else if $font-size-rendering == 'font-size-base-ten-large' {
+      @extend %font-size-base-ten-large;
+  } @else if $font-size-rendering == 'font-size-base-ten'  {
+      @extend %font-size-base-ten;
+  } @else {
+    
+  }
+}
+
+$font-size-base-ten: 'font-size-base-ten';
+%#{$font-size-base-ten} { 
+  font-size: 62.5%;
+}
+
+$font-size-base-ten-small: 'font-size-base-ten-small';
+%#{$font-size-base-ten-small} { 
+  font-size: 50%; 
+}
+
+$font-size-base-ten-large: 'font-size-base-ten-large';
+%#{$font-size-base-ten-large} {
+  font-size: 75%;
+}
+
+html {
+  
+  //@include font("Roboto"); // mixin to import Google Fonts
+  font-family: 'Roboto-Regular'; // Self-Hosted
+  @include font-rendering($font-size-base-ten); // if using alt-material-typography, else comment out
+}
+
+body {
+  //@include font("Roboto"); // mixin to import Google Fonts
+  font-family: 'Roboto-Regular'; // Self-Hosted
+}
+
+$font-classes: ('display-4', 'display-3', 'display-2', 'display-1', 'display-0', 'headline', 'title', 'title-2', 'subheading-2', 'subheading-1', 'body-2', 'body-1', 'body-0', 'caption', 'menu', 'label', 'button');
+$font-selector: ();
+@each $font-class in $font-classes {
+  $font-selector: append($font-selector, unquote('.alt-mat-#{$font-class}'), 'comma');
+}
+
+$font-weight-light: 'font-weight-light';
+%#{$font-weight-light} { font-weight: 300; }
+
+$font-weight-regular: 'font-weight-regular';
+%#{$font-weight-regular} { font-weight: 400; }
+
+$font-weight-medium: 'font-weight-medium';
+%#{$font-weight-medium} { font-weight: 500; }
+
+$font-style-normal: 'font-style-normal';
+%#{$font-style-normal} { font-style: normal; }
+
+$text-transform-inherit: 'text-transform-inherit';
+%#{$text-transform-inherit} { text-transform: inherit; }
+
+$text-transform-uppercase: 'text-transform-uppercase';
+%#{$text-transform-uppercase} { text-transform: uppercase; }
+
+@mixin typeset-display-4($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 112, $leading-size: 128, $tracking-size: -0.1, $font-margin: 28, $mobile-font-size: 112);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-light;
+}
+
+@mixin typeset-display-3($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 56, $leading-size: 84, $tracking-size: -0.05, $font-margin: 28, $mobile-font-size: 56);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-display-2($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 45, $leading-size: 48, $tracking-size: 0, $font-margin: 28, $mobile-font-size: 45);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-display-1($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 34, $leading-size: 40, $tracking-size: 0, $font-margin: 28, $mobile-font-size: 34);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-display-0($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 34, $leading-size: 40, $tracking-size: 0, $font-margin: 0, $mobile-font-size: 34);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-headline($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 24, $leading-size: 32, $tracking-size: 0, $font-margin: 20, $mobile-font-size: 24);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-title($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 20, $leading-size: 28, $tracking-size: 0.05, $font-margin: 20, $mobile-font-size: 30);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-medium;
+}
+
+@mixin typeset-title-2($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 20, $leading-size: 28, $tracking-size: 0.05, $font-margin: 0, $mobile-font-size: 30);
+  @include primary-text-color($color-value: $white);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-medium;
+}
+
+@mixin typeset-subheading-2($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 15, $leading-size: 28, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 16);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-subheading-1($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 15, $leading-size: 24, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 16);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-body-2($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 13, $leading-size: 24, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 14);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-medium;
+}
+
+@mixin typeset-body-1($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 13, $leading-size: 20, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 14);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-body-0($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 13, $leading-size: 20, $tracking-size: 0.01, $font-margin: 0, $mobile-font-size: 14);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-caption($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 12, $leading-size: 20, $tracking-size: 0.02, $font-margin: 20, $mobile-font-size: 12);
+  @include secondary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-menu($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 13, $leading-size: 20, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 14);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-regular;
+}
+
+@mixin typeset-label($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 12, $leading-size: 20, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 12);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-inherit;
+  @extend %font-style-normal;
+  @extend %font-weight-light;
+}
+
+@mixin typeset-button($family) {
+  font-family: $family;
+  @include font-mixin($font-size: 14, $leading-size: 20, $tracking-size: 0.01, $font-margin: 20, $mobile-font-size: 14);
+  @include primary-text-color($color-value: $black);
+  @extend %text-transform-uppercase;
+  @extend %font-style-normal;
+  @extend %font-weight-medium;
+}
+
+.alt-mat-#{nth($font-classes, 1)} {
+  @include typeset-display-4('Roboto-Light');
+}
+.alt-mat-#{nth($font-classes, 2)} {
+  @include typeset-display-3('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 3)} {
+  @include typeset-display-2('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 4)} {
+  @include typeset-display-1('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 5)} {
+  @include typeset-display-0('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 6)} {
+  @include typeset-headline('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 7)} {
+  @include typeset-title('Roboto-Medium');
+}
+.alt-mat-#{nth($font-classes, 8)} {
+  @include typeset-title-2('Roboto-Medium');
+}
+.alt-mat-#{nth($font-classes, 9)} {
+  @include typeset-subheading-2('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 10)} {
+  @include typeset-subheading-1('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 11)} {
+  @include typeset-body-2('Roboto-Medium');
+}
+.alt-mat-#{nth($font-classes, 12)} {
+  @include typeset-body-1('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 13)} {
+  @include typeset-body-0('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 14)} {
+  @include typeset-caption('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 15)} {
+  @include typeset-menu('Roboto-Regular');
+}
+.alt-mat-#{nth($font-classes, 16)} {
+  @include typeset-label('Roboto-Light');
+}
+.alt-mat-#{nth($font-classes, 17)} {
+  @include typeset-button('Roboto-Medium');
+}
+
+
+
+

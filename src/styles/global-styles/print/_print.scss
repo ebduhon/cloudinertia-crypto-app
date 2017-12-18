@@ -1,0 +1,223 @@
+
+/** https://developer.mozilla.org/en-US/docs/Web/CSS/length#Absolute_length_units */
+
+// 'px' 
+// • Depends on the viewing device. 
+//   For screen displays, it traditionally represents one device pixel (dot).
+//   However, for printers and high-resolution screens, one CSS picel implies multiple device pixels, so that the number of pixels per inch stays around 96.
+
+// 'mm'
+// • One millimeter.
+
+// 'q'
+// • A quarter of a millimeter (1/40th of a centimeter).
+
+// 'cm' 
+// • One centimeter (10 millimeters).
+
+// 'in'
+// • One inch (2.54 centimeters).
+
+// 'pt'
+// • One point (1/72nd of an inch).
+
+// 'pc'
+// • One pica (12 points).
+
+// 1in is always 96px
+// 3pt is always 4px
+// 25.4mm is always 96px
+
+/** https://developer.mozilla.org/en-US/docs/Web/CSS/@page/size */
+
+// Standard paper size in the United States is 8.5 x 11in.
+// 8.5in = 215.9mm
+// 8.5in = 21.59cm
+// 11in = 279.4mm
+// 11in = 27.94cm
+
+// Standard paper size in Europe is 210 x 297mm.
+// 210mm = 8.26772in
+// 210mm = 21cm
+// 297mm = 11.6929in
+// 297mm = 29.7cm
+
+// Grey text should not be lighter than 75% black for the printed resume
+
+// The 'orphans' property specifies the minimum number of lines of a paragraph that must be left at the bottom of a page.
+// The 'widows' property specifies the minimum number of lines of a paragraph that must be left at the top of a page.
+
+// @page { 
+//   size: letter portrait; 
+//   margin: 0;
+// }
+
+
+// body { margin: 0; }
+
+// .sheet-container {
+//   position: absolute;
+//   overflow: scroll;
+// }
+
+// .sheet {
+//   margin: 0;
+//   // overflow: hidden;
+//   position: relative;
+//   box-sizing: border-box;
+//   page-break-after: always;
+// }
+
+/** Paper sizes */
+// div.united-states-paper .sheet {
+//   display: block;
+//   height: 1056px;
+//   width: 816px;
+//   overflow-y: scroll;
+// }
+
+// div.europe-paper .sheet {
+//   height: 297mm;
+//   width: 210mm;
+// }
+
+/** Paper padding */
+// .sheet.padding-10mm { padding: 10mm; }
+// .sheet.padding-15mm { padding: 15mm; }
+// .sheet.padding-20mm { padding: 20mm; }
+// .sheet.padding-25mm { padding: 25mm; }
+
+// @media all {
+//   .page-break { display: none; }
+// }
+
+// @media screen {
+//   #printSection {
+//     display: none;
+//   }
+// }
+
+// @media print {
+  
+//   body {
+//     -webkit-print-color-adjust: exact !important;
+//   }
+  
+//   // body * {
+//   //   display: none;
+//   //   visibility: hidden;
+//   // }
+//   // #printSection, #printSection *:not(table):not(thead):not(tbody):not(tr):not(td):not(th) {
+//   //   display: block;
+//   //   visibility: visible;
+//   // }
+//   // #printSection {
+//   //   position: absolute;
+//   //   left: 0;
+//   //   top: 0;
+//   //   margin-bottom: 0;
+//   // }
+//   // table {
+//   //   display: table;
+//   //   visibility: visible;
+//   // }
+//   // thead {
+//   //   display: table-header-group;
+//   //   visibility: visible;
+//   // }
+//   // tbody {
+//   //   display: table-row-group;
+//   //   visibility: visible;
+//   // }
+//   // td, th {
+//   //   display: table-cell;
+//   //   visibility: visible;
+//   // }
+//   // tr {
+//   //   display: table-row;
+//   //   visibility: visible;
+//   // }
+  
+  
+  
+  
+  
+  
+//   .page-break { display: block; page-break-before: always; }
+  
+//   #content, #page {
+//     width: 100%;
+//     margin: 0;
+//     float: none;
+//   }
+  
+//   body {
+//     background: #fff !important;
+//     color: #000;
+//   }
+  
+//   /** https://developer.mozilla.org/en-US/docs/Web/CSS/:left */
+//   // ':left' CSS pseudo-class, used with the '@page' at-rule, represents all left-hand pages of a printed document.
+//   @page :left {
+//     margin: 1cm;
+//     //padding: 0;
+//     //border: 0;
+//     //background: none;
+//   }
+  
+//   /** https://developer.mozilla.org/en-US/docs/Web/CSS/:right */
+//   // ':right' CSS pseudo-class, used with the '@page' at-rule, represents all right-hand pages of a printed document.
+//   @page :right {
+//     margin: 1cm;
+//     //padding: 0;
+//     //border: 0;
+//     //background: none;
+//   }
+  
+//   /** https://developer.mozilla.org/en-US/docs/Web/CSS/:first */
+//   // ':first' CSS pseudo-class, used with the '@page' at-rule, represents the first page of a printed document.
+//   @page :first {
+//     // top and bottom margin are 1cm
+//     // right and left margin are 2cm
+//     margin: 1cm 2cm;
+//   }
+  
+//   a:link, a:visited, a {
+//     background: transparent;
+//     color: #520;
+//     font-weight: bold;
+//     text-decoration: underline;
+//     text-align: left;
+//   }
+  
+//   a {
+//     page-break-inside: avoid;
+//   }
+  
+//   blockquote {
+//     page-break-inside: avoid;
+//   }
+  
+//   h1, h2, h3, h4, h5, h6 { 
+//     page-break-after: avoid; 
+//     page-break-inside: avoid;
+//   }
+//   img {
+//     page-break-inside: avoid;
+//     page-break-after: avoid;
+//   }
+  
+//   table, pre {
+//     page-break-inside: avoid;
+//   }
+  
+//   ul, ol, dl {
+//     page-break-before: avoid;
+//   }
+  
+//   .entry:after {
+//     content: "\ All Rights Reserved. (c) 2017 Eli B. Duhon";
+//     color: #999 !important;
+//   }
+  
+// }

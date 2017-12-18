@@ -1,0 +1,42 @@
+/// Print
+@import 'print/print';
+
+/// Utilities
+@import 'utilities/variables';
+@import 'utilities/functions';
+@import 'utilities/mixins';
+@import 'utilities/placeholders';
+
+/// Vendors
+@import 'vendors/google-fonts';
+//@import 'vendors/ngx-toastr';
+@import 'vendors/angular-material';
+
+/// Vendor-extensions
+//@import 'vendor-extensions/ngx-toastr';
+@import 'vendor-extensions/angular-material';
+
+/// Fonts
+//@import 'fonts/font-face';
+@import 'fonts/fonts';
+
+/// Font Icons
+@import 'font-icons/font-icons';
+
+/// Typography
+@import 'typography/typography';
+
+
+/// Base
+@import 'base/base';
+@import 'base/flex';
+@import 'base/reset';
+
+/// Components
+@import 'components/components';
+
+/// States
+@import 'states/states';
+
+/// Themes
+@import 'themes/themes';

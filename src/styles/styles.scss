@@ -1,0 +1,15 @@
+
+// @import "./font-styles/font"; //Archived example: Relative base path configured in .angular-cli.json / apps / stylePreprocessorOptions / includePaths
+//@import "font";
+
+// @import "./font-icon-styles/font-icon"; //Archived example: Relative base path configured in .angular-cli.json / apps / stylePreprocessorOptions / includePaths
+//@import "font-icon";
+
+// @import "./typography-styles/typography"; //Archived example: Relative base path configured in .angular-cli.json / apps / stylePreprocessorOptions / includePaths
+//@import "typography";
+
+// @import "./global-styles/global"; //Archived example: Relative base path configured in .angular-cli.json / apps / stylePreprocessorOptions / includePaths
+@import "global"; // Core global import; however, this documents import order based on the previous directory structure
+
+// @import "./print-styles/print";  //Archived example: Relative base path configured in .angular-cli.json / apps / stylePreprocessorOptions / includePaths
+//@import "print";
